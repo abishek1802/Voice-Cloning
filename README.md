@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AICoverGen
 An autonomous pipeline to create covers with any RVC v2 trained AI voice from YouTube videos or a local audio file. For developers who may want to add a singing functionality into their AI assistant/chatbot/vtuber, or for people who want to hear their favourite characters sing their favourite song.
 
@@ -206,3 +207,6 @@ The use of the converted voice for the following purposes is prohibited.
 ## Disclaimer
 
 I am not liable for any direct, indirect, consequential, incidental, or special damages arising out of or in any way connected with the use/misuse or inability to use this software.
+=======
+Smart bois 
+>>>>>>> 4b1a8b8fd697ed2bd24f0943f98da7e05062c490
