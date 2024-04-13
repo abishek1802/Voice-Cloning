@@ -65,11 +65,9 @@ class MDX:
     def __init__(self, model_path: str, params: MDXModel, processor=DEFAULT_PROCESSOR):
 
         # Set the device and the provider (CPU or CUDA)
-        #self.device = torch.device(f'cuda:{processor}') if processor >= 0 else torch.device('cpu')
-        self.device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
-        #self.provider = ['CUDAExecutionProvider'] if processor >= 0 else ['CPUExecutionProvider']
-        self.provider = ['CPUExecutionProvider']
-        
+        self.device = torch.device(f'cuda:{processor}') if processor >= 0 else torch.device('cpu')
+        self.provider = ['CUDAExecutionProvider'] if processor >= 0 else ['CPUExecutionProvider']
+
         self.model = params
 
         # Load the ONNX model using ONNX Runtime
@@ -168,8 +166,6 @@ class MDX:
             waves = np.array(wave_p[:, i:i + self.model.chunk_size])
             mix_waves.append(waves)
 
-        print(self.device)
-
         mix_waves = torch.tensor(mix_waves, dtype=torch.float32).to(self.device)
 
         return mix_waves, pad, trim
@@ -242,9 +238,8 @@ class MDX:
 def run_mdx(model_params, output_dir, model_path, filename, exclude_main=False, exclude_inversion=False, suffix=None, invert_suffix=None, denoise=False, keep_orig=True, m_threads=2):
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
 
-    #device_properties = torch.cuda.get_device_properties(device)
-    print("Device", device)
-    vram_gb = 12 #device_properties.total_memory / 1024**3
+    device_properties = torch.cuda.get_device_properties(device)
+    vram_gb = device_properties.total_memory / 1024**3
     m_threads = 1 if vram_gb < 8 else 2
 
     model_hash = MDX.get_hash(model_path)
