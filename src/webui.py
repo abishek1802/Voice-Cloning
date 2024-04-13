@@ -168,12 +168,8 @@ if __name__ == '__main__':
 
     with gr.Blocks(title='AICoverGenWebUI') as app:
 
-        gr.Label('VOICE CLONER CREATED BY SMART BOIZ', show_label=False)
+        gr.Label('AICoverGen WebUI created with ❤️', show_label=False)
 
-        gr.Markdown("AI-Cover-Gen-No-UI [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ardha27/AICoverGen-NoUI-Colab/blob/main/CoverGen_No_UI.ipynb)")
-        gr.Markdown("Duplicate the space for use in private")
-        gr.Markdown("[![Duplicate this Space](https://huggingface.co/datasets/huggingface/badges/raw/main/duplicate-this-space-sm-dark.svg)](https://huggingface.co/spaces/r3gm/AICoverGen?duplicate=true)\n\n") 
-        
         # main tab
         with gr.Tab("Generate"):
 
@@ -184,7 +180,7 @@ if __name__ == '__main__':
                         ref_btn = gr.Button('Refresh Models 🔁', variant='primary')
 
                     with gr.Column() as yt_link_col:
-                        song_input = gr.Text(label='Song input', info='Link to a song on YouTube or full path to a local file. For file upload, click the button below. Example: https://www.youtube.com/watch?v=M-mtdN6R3bQ')
+                        song_input = gr.Text(label='Song input', info='Link to a song on YouTube or full path to a local file. For file upload, click the button below.')
                         show_file_upload_button = gr.Button('Upload file instead')
 
                     with gr.Column(visible=False) as file_upload_col:
